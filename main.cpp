@@ -40,23 +40,15 @@ string checkGuess(string guess, string answer) {
     return result;
 }
 
-int main(int argc, char* argv[])
-{
-    if (argc != 1) 
-    {
-        cerr << "Error: incorrect number of command line arguments\n"
-        << "Usage: " << argv[0] << endl;
-        return 1;
-    }
-    
+string generateRandomWord() {
     string words[] = {"MAJOR", "MINOR", "ALIEN", "BRAVO", "CHAOS", "DELTA", "EARTH"};
     int numWords = sizeof(words)/sizeof(words[0]);
-    
     srand(time(0));
-    
-    string guessWord = words[rand() % numWords];
-    bool userWon = false;
-    
+    return words[rand() % numWords];
+}
+
+void playWordle() {
+    string answer = generateRandomWord();
     for (int i=0; i<6; i++) {
         string userInput;
         getline(cin,userInput);
@@ -67,19 +59,19 @@ int main(int argc, char* argv[])
         }
         userInput = convertToUppercase(userInput);
         cout << userInput << '\n';
-        string result = checkGuess(userInput,guessWord);
+        string result = checkGuess(userInput,answer);
         if (result == "RRRRR") {
             cout << "You win\n";
-            userWon = true;
             break;
         } else {
             cout << result << "\n";
             cout << "Guess again\n";
         }
     }
-    if (!userWon) {
-        cout << "No more guesses\n" << "Correct word:"
-        << guessWord << '\n';
-    }
+}
+
+int main(int argc, char* argv[])
+{
+    playWordle();
     return 0;
 }
