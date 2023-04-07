@@ -1,3 +1,3 @@
 # wordle
 
-Basic CLI World game using C++
+Basic CLI Wordle game using C++
