@@ -49,25 +49,24 @@ string generateRandomWord() {
 
 void playWordle() {
     string answer = generateRandomWord();
+    cout << "WORDLE\n";
     for (int i=0; i<6; i++) {
         string userInput;
         getline(cin,userInput);
         while (!(isValidWord(userInput))) {
             cout << "invalid input\n";
-            cout << "please input again\n";
             getline(cin, userInput);
         }
         userInput = convertToUppercase(userInput);
-        cout << userInput << '\n';
         string result = checkGuess(userInput,answer);
         if (result == "RRRRR") {
             cout << "You win\n";
             break;
         } else {
             cout << result << "\n";
-            cout << "Guess again\n";
         }
     }
+    cout << "You lose. The word was " << answer << '\n';
 }
 
 int main(int argc, char* argv[])
