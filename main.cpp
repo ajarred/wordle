@@ -9,11 +9,27 @@ string convertToUppercase(string word) {
     return word;
 }
 
+bool isValidWord(string word) {
+    if (word.length() != 5) {
+        return false;
+    }
+    for (char c:word) {
+        if (!isalpha(c)) {
+            return false;
+        }
+    }
+    return true;
+}
+
 int main()
 {
     string userInput;
     getline(cin,userInput);
-    userInput = convertToUppercase(userInput);
-    cout << userInput;
+    if (!(isValidWord(userInput))) {
+        cout << "invalid input\n";
+    } else { 
+        userInput = convertToUppercase(userInput);
+        cout << userInput << '\n';
+    }
     return 0;
 }
