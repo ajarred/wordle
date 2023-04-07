@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -46,7 +48,14 @@ int main(int argc, char* argv[])
         << "Usage: " << argv[0] << endl;
         return 1;
     }
-    string guessWord = "MAJOR";
+    
+    string words[] = {"MAJOR", "MINOR", "ALIEN", "BRAVO", "CHAOS", "DELTA", "EARTH"};
+    int numWords = sizeof(words)/sizeof(words[0]);
+    
+    srand(time(0));
+    
+    string guessWord = words[rand() % numWords];
+    
     for (int i=0; i<6; i++) {
         string userInput;
         getline(cin,userInput);
@@ -66,6 +75,5 @@ int main(int argc, char* argv[])
             cout << "Guess again\n";
         }
     }
-    
     return 0;
 }
