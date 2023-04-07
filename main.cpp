@@ -29,14 +29,14 @@ int main(int argc, char* argv[])
         << "Usage: " << argv[0] << endl;
         return 1;
     }
-
-  //  while(true)
-
-    string userInput;
-    getline(cin,userInput);
-    if (!(isValidWord(userInput))) {
-        cout << "invalid input\n";
-    } else { 
+    for (int i=0; i<6; i++) {
+        string userInput;
+        getline(cin,userInput);
+        while (!(isValidWord(userInput))) {
+            cout << "invalid input\n";
+            cout << "please input again\n";
+            getline(cin, userInput);
+        }
         userInput = convertToUppercase(userInput);
         cout << userInput << '\n';
     }
