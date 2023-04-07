@@ -21,8 +21,17 @@ bool isValidWord(string word) {
     return true;
 }
 
-int main()
+int main(int argc, char* argv[])
 {
+    if (argc != 1) 
+    {
+        cerr << "Error: incorrect number of command line arguments\n"
+        << "Usage: " << argv[0] << endl;
+        return 1;
+    }
+
+  //  while(true)
+
     string userInput;
     getline(cin,userInput);
     if (!(isValidWord(userInput))) {
