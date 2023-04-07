@@ -21,6 +21,23 @@ bool isValidWord(string word) {
     return true;
 }
 
+string checkGuess(string guess, string answer) {
+    if (!(isValidWord(guess))) {
+        return "Invalid guess";
+    }
+    string result = "";
+    for (int i=0; i < guess.length(); i++) {
+        if (guess[i] == answer[i]) {
+            result += "R";
+        } else if (guess.find(answer[i]) != string::npos) {
+            result += "Y";
+        } else {
+            result += "X";
+        }
+    }
+    return result;
+}
+
 int main(int argc, char* argv[])
 {
     if (argc != 1) 
@@ -29,6 +46,7 @@ int main(int argc, char* argv[])
         << "Usage: " << argv[0] << endl;
         return 1;
     }
+    string guessWord = "MAJOR";
     for (int i=0; i<6; i++) {
         string userInput;
         getline(cin,userInput);
@@ -39,6 +57,15 @@ int main(int argc, char* argv[])
         }
         userInput = convertToUppercase(userInput);
         cout << userInput << '\n';
+        string result = checkGuess(userInput,guessWord);
+        if (result == "RRRRR") {
+            cout << "You win\n";
+            break;
+        } else {
+            cout << result << "\n";
+            cout << "Guess again\n";
+        }
     }
+    
     return 0;
 }
