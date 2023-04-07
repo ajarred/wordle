@@ -55,6 +55,7 @@ int main(int argc, char* argv[])
     srand(time(0));
     
     string guessWord = words[rand() % numWords];
+    bool userWon = false;
     
     for (int i=0; i<6; i++) {
         string userInput;
@@ -69,11 +70,16 @@ int main(int argc, char* argv[])
         string result = checkGuess(userInput,guessWord);
         if (result == "RRRRR") {
             cout << "You win\n";
+            userWon = true;
             break;
         } else {
             cout << result << "\n";
             cout << "Guess again\n";
         }
+    }
+    if (!userWon) {
+        cout << "No more guesses\n" << "Correct word:"
+        << guessWord << '\n';
     }
     return 0;
 }
