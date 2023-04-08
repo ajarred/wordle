@@ -49,7 +49,10 @@ string generateRandomWord() {
 
 void playWordle() {
     string answer = generateRandomWord();
-    cout << "WORDLE\n";
+    cout << "WORDLE\n"
+    "R = part of word, correct place\n"
+    "Y = part of word, incorrect place\n"
+    "X = not part of word\n";
     for (int i=0; i<6; i++) {
         string userInput;
         getline(cin,userInput);
