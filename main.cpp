@@ -69,7 +69,7 @@ void playWordle() {
             cout << result << "\n";
         }
     }
-    cout << "You lose. The word was " << answer << '\n';
+    cout << "The word was " << answer << '\n';
 }
 
 int main(int argc, char* argv[])
